@@ -1,0 +1,20 @@
+CC = @CC@
+CFLAGS = -g -Wall -I ../include/
+
+RM = rm;
+
+all: lbmf.o file.o main.o s_malloc.o sft
+
+lbmf.o: lbmf.c
+file.o: file.c
+main.o: main.c
+s_malloc.o: s_malloc.c
+
+sft:
+	$(CC) $(CFLAGS) -o $@ lbmf.o file.o main.o s_malloc.o
+
+
+clean:
+	rm -f *.o
+	rm -f sft
+

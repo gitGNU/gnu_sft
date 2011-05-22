@@ -1,0 +1,28 @@
+# Version number of this release.
+version = .6g
+
+# Installation prefixes.  Since GNU programs and the TeX system may be
+# installed in different places, we have different prefixes.
+prefix = @prefix@
+
+# Installation directories.
+bindir = $(prefix)/bin
+
+CC = @CC@
+CFLAGS = -g
+
+RM = rm;
+
+
+all:
+	cd src && $(MAKE) && cd ..
+
+install:
+	./install-sh -c src/sft $(bindir)/sft
+
+clean:
+	cd src && $(MAKE) clean && cd ..
+	rm -f ./bin/sft	
+
+cleanconf:
+	rm -rf autom4te.cache/ config.status config.log Makefile src/Makefile
